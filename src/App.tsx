@@ -1,6 +1,6 @@
 import './App.css'
-import Counter from './components/counter/counter'
 import Header from './components/header/header'
+import SensorCurrent from './features/sensor/sensor-current'
 
 function App() {
 
@@ -9,7 +9,15 @@ function App() {
       <Header />
       <main>
         <h1>Demo React - IOT</h1>
-        <Counter />
+
+        {/* <Counter /> */}
+
+        {/* <SensorDisplay 
+          name='Test'
+          value='42 Pommes'
+          date={new Date()} /> */}
+
+        <SensorCurrent />
 
       </main>
     </>
