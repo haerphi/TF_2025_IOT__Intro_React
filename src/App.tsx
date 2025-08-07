@@ -1,6 +1,7 @@
 import './App.css'
 import Header from './components/header/header'
 import SensorCurrent from './features/sensor/sensor-current'
+import SensorHistory from './features/sensor/sensor-history'
 
 function App() {
 
@@ -18,6 +19,8 @@ function App() {
           date={new Date()} /> */}
 
         <SensorCurrent />
+
+        <SensorHistory />
 
       </main>
     </>
