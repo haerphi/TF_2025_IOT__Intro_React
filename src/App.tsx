@@ -1,4 +1,5 @@
 import './App.css'
+import Counter from './components/counter/counter'
 import Header from './components/header/header'
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
       <Header />
       <main>
         <h1>Demo React - IOT</h1>
-
+        <Counter />
 
       </main>
     </>
