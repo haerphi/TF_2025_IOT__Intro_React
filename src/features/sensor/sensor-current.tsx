@@ -21,7 +21,7 @@ export default function SensorCurrent() {
     return (
         <div>
             <h2>Etat actuelle des sondes</h2>
-            <button onClick={handleLoad}>Charger</button>
+            <button onClick={handleLoad} disabled={isLoading}>Charger</button>
             { isLoading ? (
                 <p>Chargement...</p>
             ) : sensors ? (

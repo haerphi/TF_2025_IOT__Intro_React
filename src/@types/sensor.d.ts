@@ -4,3 +4,14 @@ export type Sensor = {
     value: string,
     timestamp: Date
 }
+
+export type SensorRequestData = {
+    temperature: {
+        value: number,
+        timestamp: string
+    },
+    humidity: {
+        value: number,
+        timestamp: string
+    }
+}

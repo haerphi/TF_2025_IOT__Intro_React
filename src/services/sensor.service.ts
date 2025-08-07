@@ -1,22 +1,25 @@
-import type { Sensor } from "../@types/sensor";
+import axios from "axios";
+import type { Sensor, SensorRequestData } from "../@types/sensor";
 
-export async function getCurrentSensors() : Promise<Sensor[] | null> {
+export async function getCurrentSensors(): Promise<Sensor[] | null> {
 
     //! ↓ Ne pas faire ça en prod. Merci d'avance. Bisous
-    await (new Promise(resolve => setTimeout(resolve, 1_000)));
+    await (new Promise(resolve => setTimeout(resolve, 500)));
 
-    // TODO Obtenir les données via l'API (Requete AJAX)
+    const { data } = await axios.get<SensorRequestData>('/api/sensors/current', { 
+        baseURL: 'http://localhost:3000' 
+    });
 
-    return [
-        {
-            sensor: 'temperature',
-            value: '131.3 °C',
-            timestamp: new Date('2025-08-07T11:50:41.397Z')
-        },
-        {
-            sensor: 'humidity',
-            value: '56.83 %',
-            timestamp: new Date('2025-08-07T11:50:42.273Z')
-        }
-    ];
+    // Mapping de "SensorRequestData" vers "Sensor"
+    const result: Sensor[] = [];
+    for (const [key, content] of Object.entries(data)) {
+        result.push({
+            sensor: key,
+            value: content.value.toString(),
+            timestamp: new Date(content.timestamp)
+        });
+    }
+    return result;
 }
+
+
