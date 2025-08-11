@@ -20,6 +20,6 @@ export type SensorWebSocketData = {
   sensor: string;
   data: {
     value: string;
-    timestamp: Date;
+    timestamp: string;
   };
 };
