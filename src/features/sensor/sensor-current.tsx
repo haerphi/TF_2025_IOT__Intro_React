@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SensorDisplay from "../../components/sensor-display/sensor-display";
 import { getCurrentSensors } from "../../services/sensor.service";
 import type { Sensor } from "../../@types/sensor";
+import { useRealtimeSensors } from "../../hooks/useRealtimeSensors";
 
 export default function SensorCurrent() {
 
     const [sensors, setSensors] = useState<Sensor[] | null>(null);
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading, setLoading] = useState(false);
+    const { readings } = useRealtimeSensors();
+
 
     const handleLoad = () => {
         setLoading(true);
@@ -17,6 +20,12 @@ export default function SensorCurrent() {
             setLoading(false);
         });
     }
+
+    useEffect(() => {
+        if (readings.length > 0) {
+            console.log("SensorCurrent: New readings received:", readings);
+        }
+    }, [readings]);
 
     return (
         <div>

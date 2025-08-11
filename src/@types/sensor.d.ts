@@ -15,3 +15,11 @@ export type SensorRequestData = {
         timestamp: string
     }
 }
+
+export type SensorWebSocketData = {
+  sensor: string;
+  data: {
+    value: string;
+    timestamp: Date;
+  };
+};
