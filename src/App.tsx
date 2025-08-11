@@ -1,12 +1,12 @@
 import "./App.css";
 import Header from "./components/header/header";
-import { WebSocketProvider } from "./contextes/WebSocketContext";
+import { SensorWebSocketProvider } from "./contextes/WebSocketContext";
 import SensorCurrent from "./features/sensor/sensor-current";
 import SensorHistory from "./features/sensor/sensor-history";
 
 function App() {
   return (
-    <WebSocketProvider>
+    <SensorWebSocketProvider>
       <Header />
       <main>
         <h1>Demo React - IOT</h1>
@@ -22,7 +22,7 @@ function App() {
 
         <SensorHistory />
       </main>
-    </WebSocketProvider>
+    </SensorWebSocketProvider>
   );
 }
 
